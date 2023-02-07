@@ -47,4 +47,9 @@ class Report extends Model
         return StringHelper::convertFromSmallCaps($this->description);
     }
 
+    public function images()
+    {
+        return $this->hasMany(Images::class);
+    }
+
 }

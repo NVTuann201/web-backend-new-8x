@@ -8,7 +8,7 @@ class Update5ConstructionsTable extends Migration
 {
     public function up()
     {
-        DB::statement('ALTER TABLE constructions ADD COLUMN geom geometry(Point,4326);');
+        DB::statement('ALTER TABLE constructions ADD COLUMN geom geometry(Geometry,4326);');
     }
 
     public function down()

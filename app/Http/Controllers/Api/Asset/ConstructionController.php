@@ -19,23 +19,8 @@ class ConstructionController extends ApiServiceController
     public function addNewGeometry(Request $request)
     {
         $id = $request->get('id');
-        $type = $request->get('type');
-        $coordinates = $request->get('coordinates');
-
-        if ($type === 'polygon') {
-            $ngoac = ['((', '))'];
-        } else {
-            $ngoac = ['(', ')'];
-        }
-        $str = strtoupper($type) . $ngoac[0];
-        foreach ($coordinates as $each) {
-            $str = $str . $each[0] . " " . $each[1] . ",";
-        }
-        $str = rtrim($str, ',');
-        $str .= $ngoac[1];
-
-        Construction::query()->where('id', $id)->update(['geom' => $str]);
-        return response()->json($str);
+        Construction::query()->where('id', $id)->update(['geom' => $request->geom]);
+        return response()->json($request->get('geom'));
     }
 
     public function getGeometry($id)

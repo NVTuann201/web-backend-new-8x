@@ -18,8 +18,11 @@ class CreateImagesTable extends Migration
             $table->integer('report_id');
             $table->foreign('report_id')->references('id')->on('reports')->onDelete('cascade');
             // $table->geometry('location');
-            $table->point('location')->nullable();
-            $table->string('image_url');
+            $table->point('location');
+            $table->string('image1');
+            $table->string('image2')->nullable();
+            $table->string('image3')->nullable();
+            $table->string('image4')->nullable();
             $table->timestamps();
         });
     }

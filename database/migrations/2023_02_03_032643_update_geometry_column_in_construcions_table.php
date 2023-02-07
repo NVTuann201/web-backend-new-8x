@@ -15,10 +15,7 @@ class UpdateGeometryColumnInConstrucionsTable extends Migration
      */
     public function up()
     {
-        // Schema::table('construcions', function (Blueprint $table) {
-        //     $table->update(['geometry' => DB::raw("ST_GeomFromText('POINT(' || longitude || ' ' || latitude || ')')")]);
-        // });
-        Construction::query()->update(['geom' => DB::raw("ST_GeomFromText('POINT(' || longitude || ' ' || latitude || ')')")]);
+        Construction::query()->update(['geom' => DB::raw("ST_GeomFromText('POINT(' || longitude || ' ' || latitude || ')', 4326)")]);
     }
 
     /**
@@ -28,11 +25,6 @@ class UpdateGeometryColumnInConstrucionsTable extends Migration
      */
     public function down()
     {
-        // Schema::table('construcions', function (Blueprint $table) {
-        //     $table->update([
-        //         'geom' => null
-        //     ]);
-        // });
         Construction::query()->update([
             'geom' => null
         ]);

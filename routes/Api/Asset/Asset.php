@@ -45,6 +45,9 @@ $api->group(['namespace' => 'Asset', 'as' => 'api.asset.'], function ($api) {
 
         $api->get('reports', 'ReportController@index');
         $api->post('reports', 'ReportController@store');
+
+        $api->post('reports/images', 'ImageController@store');
+
         $api->delete('reports/{id}', 'ReportController@destroy');
         $api->post('reports/{id}', 'ReportController@update');
         $api->get('projects', 'ProjectController@index');

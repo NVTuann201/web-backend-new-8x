@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers\Api\Asset;
 
+use App\Exports\ProjectsExport;
+use App\Exports\SurveysExport;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Api\Auth\AdminRequest;
 use App\Http\Requests\Api\DocumentRequest;
@@ -134,6 +136,11 @@ class ProjectController extends Controller
         $query->with(["financialProgresses", 'order.reports.physicalProgress','order.report.physicalProgress', 'order.construction.area', 'order.construction.department', 'order.construction.structure']);
 
         return response()->json($query->paginate($page_size, ['*'], 'page', $current_page), 200);
+    }
+
+    public function exportExcel(Request $request) {
+        $now = Carbon::now()->format('Y-m-d');
+        return (new ProjectsExport($request))->download("Projects_exported_$now.xlsx");
     }
 
     public function checkMISExists(Request $request) {

@@ -52,6 +52,7 @@ $api->group(['namespace' => 'Asset', 'as' => 'api.asset.'], function ($api) {
         $api->post('projects', 'ProjectController@store');
         $api->put('projects/{id}', 'ProjectController@update');
         $api->get('checkMISExists', 'ProjectController@checkMISExists');
+        $api->get('exports/projects', 'ProjectController@exportExcel');
         $api->delete('projects/{id}', 'ProjectController@delete');
         $api->get('projects/values/executingdepartments', 'ProjectController@getExecutingDepartments');
         $api->get('projects_kpi', 'ProjectController@kpiIndex');

@@ -13,27 +13,27 @@ class UpdateImagesTableData extends Migration
      */
     public function up()
     {
-        DB::table('images')->insertUsing(['report_id', 'image_url', 'location'], function ($query) {
-            $query->select('reports.id', 'reports.image1', 'constructions.geom')
+        DB::table('images')->insertUsing(['report_id', 'image_url', 'location', 'created_at'], function ($query) {
+            $query->select('reports.id', 'reports.image1', 'constructions.geom', 'reports.updated_at')
                 ->from('reports')
                 ->join('constructions', 'reports.construction_id', '=', 'constructions.id')
                 ->whereNotNull('reports.image1');
         });
 
-        DB::table('images')->insertUsing(['report_id', 'image_url', 'location'], function ($query) {
-            $query->select('reports.id', 'reports.image1', 'constructions.geom')
+        DB::table('images')->insertUsing(['report_id', 'image_url', 'location', 'created_at'], function ($query) {
+            $query->select('reports.id', 'reports.image1', 'constructions.geom', 'reports.updated_at')
                 ->from('reports')
                 ->join('constructions', 'reports.construction_id', '=', 'constructions.id')
                 ->whereNotNull('reports.image2');
         });
-        DB::table('images')->insertUsing(['report_id', 'image_url', 'location'], function ($query) {
-            $query->select('reports.id', 'reports.image1', 'constructions.geom')
+        DB::table('images')->insertUsing(['report_id', 'image_url', 'location', 'created_at'], function ($query) {
+            $query->select('reports.id', 'reports.image1', 'constructions.geom', 'reports.updated_at')
                 ->from('reports')
                 ->join('constructions', 'reports.construction_id', '=', 'constructions.id')
                 ->whereNotNull('reports.image3');
         });
-        DB::table('images')->insertUsing(['report_id', 'image_url', 'location'], function ($query) {
-            $query->select('reports.id', 'reports.image1', 'constructions.geom')
+        DB::table('images')->insertUsing(['report_id', 'image_url', 'location', 'created_at'], function ($query) {
+            $query->select('reports.id', 'reports.image1', 'constructions.geom', 'reports.updated_at')
                 ->from('reports')
                 ->join('constructions', 'reports.construction_id', '=', 'constructions.id')
                 ->whereNotNull('reports.image4');

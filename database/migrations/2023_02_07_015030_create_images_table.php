@@ -17,8 +17,8 @@ class CreateImagesTable extends Migration
             $table->id();
             $table->integer('report_id');
             $table->foreign('report_id')->references('id')->on('reports')->onDelete('cascade');
-            $table->geometry('location');
-            //$table->point('location', '4326')->nullable();
+            // $table->geometry('location');
+            $table->point('location')->nullable();
             $table->string('image_url');
             $table->timestamps();
         });
@@ -31,9 +31,6 @@ class CreateImagesTable extends Migration
      */
     public function down()
     {
-        Schema::table('images', function (Blueprint $table) {
-            $table->dropForeign('report_id');
-        });
         Schema::dropIfExists('images');
     }
 }

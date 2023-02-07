@@ -20,7 +20,7 @@ class CreateImagesTable extends Migration
             // $table->geometry('location');
             $table->point('location');
             $table->string('image1');
-            $table->string('image2')->nullable();
+            $table->string('image2');
             $table->string('image3')->nullable();
             $table->string('image4')->nullable();
             $table->timestamps();

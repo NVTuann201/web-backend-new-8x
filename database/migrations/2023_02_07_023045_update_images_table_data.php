@@ -47,6 +47,6 @@ class UpdateImagesTableData extends Migration
      */
     public function down()
     {
-        //
+        DB::table('images')->truncate();
     }
 }

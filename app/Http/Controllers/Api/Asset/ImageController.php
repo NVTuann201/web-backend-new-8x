@@ -30,8 +30,8 @@ class ImageController extends Controller
         $image2 = $request->file('image2');
         $image3 = $request->file('image3');
         $image4 = $request->file('image4');
-        // dd(1);
         $sub_dir = Carbon::now()->format('Ymd');
+        // dd($image1);
         $img1Path = Storage::disk('public')->putFile('imagescompress/'.$sub_dir, $image1);
         $img2Path = Storage::disk('public')->putFile('imagescompress/'.$sub_dir, $image2);
         if (isset($image3)) {
